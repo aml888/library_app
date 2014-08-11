@@ -24,6 +24,7 @@ gem 'mini_magick'
 
 gem 'twitter-bootstrap-rails'
 
+
 gem 'devise'
 
 # Use SCSS for stylesheets
