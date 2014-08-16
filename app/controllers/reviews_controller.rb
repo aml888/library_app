@@ -47,14 +47,13 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
+    @book = Book.find(params[:book_id])
+    @review = @book.reviews.find(params[:id])
     @review.destroy
-     respond_to do |format|
-		format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
-		format.json { head :no_content }
-	end
-  end
+    redirect_to book_path(@book)
+  end   
   
-
+ 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review

@@ -26,20 +26,29 @@
 </p>
 
 <h3>Reviews</h3>
-<% @book.reviews.each do |review| %>
-  <p>
-    <strong>Username:</strong>
-    <%= review.user_name %>
-  </p>
- 
-  <p><strong>Review:</strong>
-    <%= review.body %>
-  </p>
-<% end %>
 
+ <% @book.reviews.each do |review| %>
+  <p>
+  <strong>Username:</strong>
+  <%= review.user_name %>
+  </p>
+
+  <p><strong>Review:</strong>
+  <%= review.body %>
+  </p>
+
+  <p>
+  <%= link_to 'Destroy review', [review.book, review],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>
+  
+  
+   <% end %>
 
 <h3>Add a review:</h3>
-<%= form_for([@book, @book.reviews.build]) do |f| %>
+ 
+ <%= form_for([@book, @book.reviews.build]) do |f| %>
   <p>
     <%= f.label :user_name %><br>
     <%= f.text_field :user_name %>
@@ -51,7 +60,9 @@
   <p>
     <%= f.submit %>
   </p>
-<% end %>
+ <% end %>
+
+
 
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
