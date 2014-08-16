@@ -25,20 +25,35 @@
   <%= @book.description %>
 </p>
 
-
 <h3>Reviews</h3>
-<% @reviews.each do |review| %>
-  <div>
-    <strong><%= review.user_name %></strong>
-    <br />
-    <p><%= review.body %></p>
-    <p><%= link_to 'Delete', review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-  </div>
+<% @book.reviews.each do |review| %>
+  <p>
+    <strong>Username:</strong>
+    <%= review.user_name %>
+  </p>
+ 
+  <p><strong>Review:</strong>
+    <%= review.body %>
+  </p>
 <% end %>
-<%= render 'reviews/form' %>
 
+
+<h3>Add a review:</h3>
+<%= form_for([@book, @book.reviews.build]) do |f| %>
+  <p>
+    <%= f.label :user_name %><br>
+    <%= f.text_field :user_name %>
+  </p>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
 
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
-<%= link_to 'Back', books_path %>
+

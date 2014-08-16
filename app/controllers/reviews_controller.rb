@@ -24,19 +24,12 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
-
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
-      else
-        format.html { render :new }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
-    end
+	@book = Book.find(params[:book_id])
+    @review = @book.reviews.create(review_params)
+    redirect_to book_path(@book)
   end
-
+	
+	
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
@@ -55,11 +48,12 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1.json
   def destroy
     @review.destroy
-    respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+     respond_to do |format|
+		format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+		format.json { head :no_content }
+	end
   end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -72,3 +66,4 @@ class ReviewsController < ApplicationController
       params.require(:review).permit(:user_name, :body, :user_id, :book_id)
     end
 end
+

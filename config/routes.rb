@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :reviews
-
+  
+  resources :books do
+	resources :reviews  
+  end
+  
   devise_for :users
-  resources :books
+  
   root :to => redirect('/books')
 
   # The priority is based upon order of creation: first created -> highest priority.
