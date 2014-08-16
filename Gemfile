@@ -26,6 +26,10 @@ gem 'twitter-bootstrap-rails'
 
 gem 'devise'
 
+gem 'cancancan'
+
+gem 'rolify'
+
 
 
 # Use SCSS for stylesheets

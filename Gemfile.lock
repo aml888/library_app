@@ -30,6 +30,7 @@ GEM
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7-x86-mingw32)
     builder (3.2.2)
+    cancancan (1.9.2)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -97,6 +98,7 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    rolify (3.4.0)
     rspec-core (3.0.3)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.3)
@@ -160,6 +162,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  cancancan
   carrierwave
   coffee-rails (~> 4.0.0)
   devise
@@ -169,6 +172,7 @@ DEPENDENCIES
   pg
   rails (= 4.1.0)
   rails_12factor
+  rolify
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
