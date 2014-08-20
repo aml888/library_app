@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Author</th>
       <th>Picture</th>
       <th>Isbn</th>
       <th>Description</th>
@@ -16,7 +15,6 @@
     <% @books.each do |book| %>
       <tr>
         <td><%= book.title %></td>
-        <td><%= book.author %></td>
         <td><%= image_tag book.picture_url(:thumb) if book.picture? %></td>
         <td><%= book.ISBN %></td>
         <td><%= book.description %></td>
