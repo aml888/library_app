@@ -32,10 +32,17 @@
   </div>
   
  
-  
+<%= f.fields_for :authors do |author_form| %>
+	<div class="field">
+	<%= author_form.label :author %><br>
+	<%= author_form.text_field :name %>
+	</div>
+	<% end %></p>
 
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= f.collection_select(:author_ids, Author.all, :id, :name, {selected: @book.author_ids, include_blank: false},{ multiple: true }) %>
+
+<div class="actions">
+	<%= f.submit %>
+</div>
+ 
 <% end %>
