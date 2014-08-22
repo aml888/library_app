@@ -30,6 +30,8 @@ gem 'cancancan'
 
 gem 'rolify'
 
+gem 'will_paginate', '~> 3.0.5'
+
 
 
 # Use SCSS for stylesheets
