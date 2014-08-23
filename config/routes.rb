@@ -1,10 +1,25 @@
 Rails.application.routes.draw do
   
+  
+  
   resources :books do
 	resources :reviews  
   end
   
-  devise_for :users
+  devise_for :users 
+  
+  resources :users do
+    member do
+      get :following
+    end
+  end
+  
+  resources :books do
+    member do
+      get :followers
+    end
+  end
+  
   
   root :to => redirect('/books')
 
