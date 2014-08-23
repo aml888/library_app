@@ -1,9 +1,14 @@
+
  <div class="span8">
-    <h3><%= @title %></h3>
-    <% if @users.any? %>
-      <ul class="users">
-        <%= render @users %>
+ 
+    <h3><%= @title %></h3> 
+	<h4><%= @user.followed_books.count %></h4>
+	<% if @books.any? %>
+      <ul class="books">
+        <%= render @books %>
       </ul>
       <%= will_paginate %>
     <% end %>
   </div>
+  
+  
