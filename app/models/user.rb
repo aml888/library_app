@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 	has_many :followed_books, through: :relationships, source: :followed
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-	devise :database_authenticatable, :registerable,
+	devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
 	def following?(book)

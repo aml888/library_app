@@ -26,6 +26,8 @@ gem 'twitter-bootstrap-rails'
 
 gem 'devise'
 
+gem 'devise_invitable'
+
 gem 'cancancan'
 
 gem 'rolify'
