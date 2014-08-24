@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     end
   end
   
+  get 'tags/:tag', to: 'books#index', as: :tag
+  
   resources :relationships, only: [:create, :destroy]
   root :to => redirect('/books')
 
