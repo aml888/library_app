@@ -8,16 +8,16 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-#	def following?(book)
-#		relationships.find_by(followed_id: book.id)
-#	end
+	def following?(book)
+		relationships.find_by(followed_id: book.id)
+	end
 
-#	def follow!(book)
-#		relationships.create!(followed_id: book.id)
-#	end		 
+	def follow!(book)
+		relationships.create!(followed_id: book.id)
+	end		 
 
-#	def unfollow!(book)
-#		relationships.find_by(followed_id: book.id).destroy
-#	end  
+	def unfollow!(book)
+		relationships.find_by(followed_id: book.id).destroy
+	end  
 		 
 end

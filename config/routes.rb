@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
   
-  
+  resources :relationships, only: [:create, :destroy]
   root :to => redirect('/books')
 
   # The priority is based upon order of creation: first created -> highest priority.

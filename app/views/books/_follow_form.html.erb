@@ -1,0 +1,5 @@
+ <% if current_user.following?(@book) %>
+    <%= render 'unfollow' %>
+  <% else %>
+    <%= render 'follow' %>
+  <% end %>

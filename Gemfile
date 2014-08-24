@@ -30,6 +30,8 @@ gem 'cancancan'
 
 gem 'rolify'
 
+gem 'factory_girl'
+
 gem 'will_paginate', '~> 3.0.5'
 
 
