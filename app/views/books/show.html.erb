@@ -23,9 +23,16 @@
 </p>
 
 
+ <% @book.authors.each do |author| %>
+  <p> <strong>Author:</strong>
+  <%= author.name %>
+  </p>
 
+<% end %>
 
 <h3><%= @book.reviews.count %>  Reviews</h3>
+
+
 
  <% @book.reviews.each do |review| %>
   <p>

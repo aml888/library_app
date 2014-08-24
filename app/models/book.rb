@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
 	belongs_to :user
-	has_many :authorships
+	has_many :authorships 
 	has_many :authors, through: :authorships
 	mount_uploader :picture, PictureUploader
 	validates :title, :ISBN, :picture, presence: {message: 'must not be blank'}
@@ -10,6 +10,15 @@ class Book < ActiveRecord::Base
 	has_many :followers, through: :reverse_relationships, source: :follower
     acts_as_taggable
 	
+
 	
-	
+
+	def self.search(search)
+		if search
+			where('title LIKE ?', "%#{search}%")
+		else
+			all
+		end
+	end
 end
+
