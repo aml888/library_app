@@ -12,7 +12,6 @@ class Book < ActiveRecord::Base
 	
 
 	
-
 	def self.search(search)
 		if search
 			where('title LIKE ?', "%#{search}%")
@@ -21,4 +20,4 @@ class Book < ActiveRecord::Base
 		end
 	end
 end
-
+	
