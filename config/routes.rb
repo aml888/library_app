@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   
   
+  ActiveAdmin.routes(self)
   resources :books do
 	resources :reviews  
   end
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   root :to => redirect('/books')
 
-  match '/indexadmin' => 'books#indexadmin'
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
