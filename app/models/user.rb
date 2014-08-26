@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   
-  
 	def following?(book)
 		relationships.find_by(followed_id: book.id)
 	end
@@ -22,5 +21,6 @@ class User < ActiveRecord::Base
 	def unfollow!(book)
 		relationships.find_by(followed_id: book.id).destroy
 	end  
-		 
 end
+
+		 

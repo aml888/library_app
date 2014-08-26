@@ -53,6 +53,14 @@
   
    <% end %>
 
+  <div id="star-rating">
+    <input type="radio" name="example" class="rating" value="1" />
+    <input type="radio" name="example" class="rating" value="2" />
+    <input type="radio" name="example" class="rating" value="3" />
+    <input type="radio" name="example" class="rating" value="4" />
+    <input type="radio" name="example" class="rating" value="5" />
+</div> 
+   
 <h3>Add a review:</h3>
  
  <%= form_for([@book, @book.reviews.build]) do |f| %>

@@ -13,6 +13,12 @@ class Book < ActiveRecord::Base
 
 	validates :title, :ISBN, :picture, presence: {message: 'must not be blank'}
 	
+	
+  
+	
+
+	
+	
 	def self.search(search)
 		if search
 			where('title LIKE ?', "%#{search}%")
