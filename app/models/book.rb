@@ -21,5 +21,11 @@ class Book < ActiveRecord::Base
 			all
 		end
 	end
+	
+	def approve!
+		 self.approved = true
+		self.save
+	end
+
 end
 	

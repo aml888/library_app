@@ -10,15 +10,6 @@ class BooksController < ApplicationController
 	@pending_books = Book.pending_approval
   end
 
-
-  
-  def indexadmin
-  	@books = Book.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
-	@approved_books = Book.approved 
-	@pending_books = Book.pending_approval
-  end
-  
-
   # GET /books/1
   # GET /books/1.json
   def show
@@ -78,6 +69,13 @@ class BooksController < ApplicationController
     end
   end
 
+  def approve
+	return redirect_to books_url if @book.approve!
+	redirect_to books_url, notice: 'Problem approving topic'
+  end
+ 
+ 
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
