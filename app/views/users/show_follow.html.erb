@@ -1,5 +1,6 @@
-
  <div class="span8">
- 
-    <h3><% Books I'm following %></h3> 
-	
+    <h3><%= @title %></h3>
+    <% @user.followed_books.each do |followed_book| %>
+     <p><%= followed_book.title %></p>
+ <% end %>
+  </div>

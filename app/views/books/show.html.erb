@@ -30,27 +30,27 @@
 
 <% end %>
 
-<h3><%= @book.reviews.count %>  Reviews</h3>
 
+<% if @book.reviews.any? %>
+	<h3><%= pluralize(@book.reviews.count, 'review') %></h3>
+<% else %>
+ <p><strong>No reviews yet. </p>
+<% end %>
 
 
  <% @book.reviews.each do |review| %>
-  <p>
-  <strong>Username:</strong>
   <%= review.user_name %>
   </p>
-
-  <p><strong>Review:</strong>
   <%= review.body %>
   </p>
-
+ 
   <p>
   <%= link_to 'Destroy review', [review.book, review],
                method: :delete,
                data: { confirm: 'Are you sure?' } %>
 </p>
   
-  
+ <p>-------------------------------------------------</p> 
    <% end %>
 
   <div id="star-rating">
