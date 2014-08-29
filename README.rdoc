@@ -1,5 +1,8 @@
 == README
 
+
+<a href="https://codeclimate.com/repos/53fe7b186956804b2a00e6ad/feed"><img src="https://codeclimate.com/repos/53fe7b186956804b2a00e6ad/badges/0179a4cd8f184f3861ec/gpa.svg" /></a>
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

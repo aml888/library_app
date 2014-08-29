@@ -1,10 +1,12 @@
 class BooksController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direction
+  
+  
   # GET /books
   # GET /books.json
-  def index
+  def index 
 	@books = Book.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
 	@approved_books = Book.approved 
 	@pending_books = Book.pending_approval
@@ -88,4 +90,13 @@ class BooksController < ApplicationController
       params.require(:book).permit(:title, :picture, :ISBN, :description, :tag_list, author_ids: [], authors_attributes: [:name])
 	  
     end
+	
+	 def sort_column
+		Book.column_names.include?(params[:sort]) ? params[:sort] : "name"
+	end
+	
+	def sort_direction
+		%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+	end
+	
 end

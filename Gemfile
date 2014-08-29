@@ -5,12 +5,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.0'
 # Use sqlite3 as the database for Active Record
 
-group :development do
-  gem 'sqlite3'
-end
 
 group :test, :development do
 	gem 'rspec-rails'
+	gem 'factory_girl_rails'
+	gem 'capybara'
+	gem 'sqlite3'
 end
 
 group :production do
@@ -31,8 +31,6 @@ gem 'devise_invitable'
 gem 'cancancan'
 
 gem 'rolify'
-
-gem 'factory_girl'
 
 gem 'will_paginate', '~> 3.0.5'
 
