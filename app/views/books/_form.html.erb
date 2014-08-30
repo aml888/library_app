@@ -31,13 +31,14 @@
     <%= f.text_area :description %>
   </div>
   
-
+<p>
 <%= f.fields_for :authors do |author_form| %>
 	<div class="field">
-	<%= author_form.label :name %><br>
+	<%= author_form.label :Author %><br>
 	<%= author_form.text_field :name %>
 	</div>
-	<% end %></p>
+	<% end %>
+</p>
 
 	
 <%= f.collection_select(:author_ids, Author.all, :id, :name, {selected: @book.author_ids, include_blank: false},{ multiple: true }) %>

@@ -1,0 +1,38 @@
+<p>
+<strong>Your book entry has been submitted to the administrator for approval. </strong>
+</p>
+
+ <p><strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  
+  <%= image_tag(@book.picture_url, :width => 200, :height => 250) if @book.picture.present? %>
+</p>
+
+<p>
+  <strong>Isbn:</strong>
+  <%= @book.ISBN %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @book.description %>
+</p>
+
+
+ <% @book.authors.each do |author| %>
+  <p> <strong>Author:</strong>
+  <%= author.name %>
+  </p>
+
+<% end %>
+
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back to book index', books_path %> |
+<%= link_to 'Add a book', new_book_path %>
+
+
+
