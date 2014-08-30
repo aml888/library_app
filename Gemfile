@@ -13,6 +13,9 @@ group :test, :development do
 	gem 'sqlite3'
 end
 
+gem 'simplecov', :require => false, :group => :test
+
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
