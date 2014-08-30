@@ -23,10 +23,13 @@ RSpec.describe BooksController, :type => :controller do
   # This should return the minimal set of attributes required to create a valid
   # Book. As you add validations to Book, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
-
+  let(:valid_attributes) { { title: "Pride and Prejudice"
+							 picture: "book.jpg"
+							 ISBN: "978-1482576153"
+							} }
+							 
+  
+	
   let(:invalid_attributes) {
     skip("Add a hash of attributes invalid for your model")
   }
@@ -157,3 +160,4 @@ RSpec.describe BooksController, :type => :controller do
   end
 
 end
+1
