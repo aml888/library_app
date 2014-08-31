@@ -18,6 +18,7 @@ class BooksController < ApplicationController
 	@book = Book.find(params[:id])
 	@reviews = @book.reviews.all
 	@review = @book.reviews.build
+	@rates = @book.rates.all
   end
 
   # GET /books/new

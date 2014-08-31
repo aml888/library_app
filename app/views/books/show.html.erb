@@ -47,11 +47,7 @@
  <p>--------------------------------------------------------------------</p> 
    <% end %>
 
-<h3>Rate this book:</h3>
- <%= rating_for @book %>
-
-<br />
-<br /> 
+ 
    
 <h3>Write a review:</h3>
  
@@ -69,5 +65,11 @@
   </p>
  <% end %>
 
+ 
+<h3>Rate this book:</h3>
+ <%= rating_for @book %>
+
+ 
+ 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

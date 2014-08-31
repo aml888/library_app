@@ -5,6 +5,7 @@ class Book < ActiveRecord::Base
 	has_many :authors, through: :authorships
 	mount_uploader :picture, PictureUploader
 	has_many :reviews
+	has_many :ratings
 	accepts_nested_attributes_for :authors, reject_if: proc { |attributes| attributes['name'].blank? }
 	has_many :reverse_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent: :destroy
 	has_many :followers, through: :reverse_relationships, source: :follower
