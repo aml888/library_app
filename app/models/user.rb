@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 	has_many :reviews
 	has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 	has_many :followed_books, through: :relationships, source: :followed
+	ratyrate_rater
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :invitable, :database_authenticatable, :registerable,

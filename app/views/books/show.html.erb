@@ -44,16 +44,14 @@
                data: { confirm: 'Are you sure?' } %>
 </p>
   
- <p>-------------------------------------------------</p> 
+ <p>--------------------------------------------------------------------</p> 
    <% end %>
 
-  <div id="star-rating">
-    <input type="radio" name="example" class="rating" value="1" />
-    <input type="radio" name="example" class="rating" value="2" />
-    <input type="radio" name="example" class="rating" value="3" />
-    <input type="radio" name="example" class="rating" value="4" />
-    <input type="radio" name="example" class="rating" value="5" />
-</div> 
+<h3>Rate this book:</h3>
+ <%= rating_for @book %>
+
+<br />
+<br /> 
    
 <h3>Write a review:</h3>
  

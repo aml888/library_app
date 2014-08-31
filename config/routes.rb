@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   
   
+  post '/rate' => 'rater#create', :as => 'rate'
   ActiveAdmin.routes(self)
   resources :books do
 	resources :reviews  

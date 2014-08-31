@@ -1,6 +1,19 @@
- <div class="span8">
+
+
+
     <h3><%= @title %></h3>
     <% @user.followed_books.each do |followed_book| %>
      <p><%= followed_book.title %></p>
+	 
+	 <%= form_tag do %>
+	<%= check_box_tag(:review_alert) %>
+	 <%= label_tag(:review
+	 _alert, "Get review alert") %>
+	
+	<%= check_box_tag(:rating_alert) %>
+	 <%= label_tag(:rating_alert, "Get rating alert") %>
+		
+
+	<% end %>
  <% end %>
-  </div>
+  

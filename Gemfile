@@ -41,7 +41,9 @@ gem 'acts-as-taggable-on'
 
 gem 'activeadmin', github: 'activeadmin'
 
-gem 'jquery-star-rating-rails'
+gem 'ratyrate'
+
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
