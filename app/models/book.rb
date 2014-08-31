@@ -1,6 +1,5 @@
 class Book < ActiveRecord::Base
 	belongs_to :user
-	validates :user_id, presence: true
 	has_many :authorships 
 	has_many :authors, through: :authorships
 	mount_uploader :picture, PictureUploader
