@@ -26,8 +26,13 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
 	@book = Book.find(params[:book_id])
-    @review = @book.reviews.create(review_params)
-    redirect_to book_path(@book)
+	if @book.deactivated
+		flash[:notice] = "This book has been deactivated. You cannot add reviews or ratings."
+		redirect_to book_path(@book)
+	else
+		@review = @book.reviews.create(review_params)
+	    redirect_to book_path(@book)
+	end
   end
 	
 	

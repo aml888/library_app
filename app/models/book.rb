@@ -12,6 +12,7 @@ class Book < ActiveRecord::Base
 	ratyrate_rateable
 	scope :approved, -> { where(approved: true) }
 	scope :pending_approval, -> { where(approved: [false, nil]) }
+	scope :deactivated, -> {where(deactivated: true) }
 	
 	validates :title, :ISBN, presence: {message: 'must not be blank'}
 	
@@ -26,9 +27,15 @@ class Book < ActiveRecord::Base
 	end
 	
 	def approve!
-		 self.approved = true
+		self.approved = true
 		self.save
 	end
 
+	def deactivate!
+		if @book.reviews > 0 || @book.ratings > 0
+			self.deactivated = true
+			self.save
+		end
+	end
 end
 	

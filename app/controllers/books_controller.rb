@@ -10,6 +10,7 @@ class BooksController < ApplicationController
 	@books = Book.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
 	@approved_books = Book.approved 
 	@pending_books = Book.pending_approval
+	
   end
 
   # GET /books/1
@@ -43,6 +44,7 @@ class BooksController < ApplicationController
         format.html { render 'show_pending', notice: 'Your book entry has been submitted to the administrator for approval.' }
         format.json { render :show, status: :created, location: @book }
       else
+        format.html { render :new }
         format.html { render :new }
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
@@ -82,10 +84,10 @@ class BooksController < ApplicationController
 
   def approve
 	return redirect_to books_url if @book.approve!
-	redirect_to books_url, notice: 'Problem approving topic'
+	redirect_to books_url, notice: 'Problem approving book'
   end
  
- 
+
   
   private
     # Use callbacks to share common setup or constraints between actions.
