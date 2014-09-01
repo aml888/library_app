@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index 
+	#@books = Book.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
 	@books = Book.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
 	@approved_books = Book.approved 
 	@pending_books = Book.pending_approval
@@ -84,7 +85,7 @@ class BooksController < ApplicationController
     end
 	
 	 def sort_column
-		Book.column_names.include?(params[:sort]) ? params[:sort] : "name"
+		Book.column_names.include?(params[:sort]) ? params[:sort] : "title"
 	end
 	
 	def sort_direction

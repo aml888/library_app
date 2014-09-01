@@ -32,6 +32,7 @@ class ReviewsController < ApplicationController
 	else
 		@review = @book.reviews.create(review_params)
 	    redirect_to book_path(@book)
+		BookMailer.book_review_alert(@user, @book).deliver
 	end
   end
 	
