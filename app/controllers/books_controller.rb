@@ -1,8 +1,7 @@
 class BooksController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
-  
+  load_and_authorize_resource
   
   # GET /books
   # GET /books.json
@@ -10,7 +9,6 @@ class BooksController < ApplicationController
 	@books = Book.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
 	@approved_books = Book.approved 
 	@pending_books = Book.pending_approval
-	
   end
 
   # GET /books/1
@@ -24,7 +22,6 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
-	@book = Book.new
 	@book.authors.build
   end
 
@@ -36,8 +33,7 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(book_params)
-	@book.user = current_user
+    @book.user = current_user
 
     respond_to do |format|
       if @book.save
@@ -55,13 +51,9 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1.json
   def update
     respond_to do |format|
-      if @book.user == current_user && @book.update(book_params)
+      if @book.update(book_params)
 		format.html { redirect_to @book, notice: 'Book was successfully updated.' }
         format.json { render :show, status: :ok, location: @book }
-      else
-		flash[:notice] = "You are not authorized to edit this page."
-        format.html { render :edit }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -70,14 +62,9 @@ class BooksController < ApplicationController
   # DELETE /books/1.json
   def destroy
     respond_to do |format|
-	  if @book.user == current_user
-		@book.destroy  
+	  if @book.destroy  
 		format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
 		format.json { head :no_content }
-	  else
-	    format.html { redirect_to books_url, notice: 'You are not authorized to delete this book.' }
-		format.json { head :no_content }
-	
 	  end
 	end  
   end
@@ -86,15 +73,9 @@ class BooksController < ApplicationController
 	return redirect_to books_url if @book.approve!
 	redirect_to books_url, notice: 'Problem approving book'
   end
- 
-
-  
+   
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_book
-      @book = Book.find(params[:id])
-	 
-    end
+   
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params

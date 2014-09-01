@@ -1,5 +1,4 @@
  <p>Library</p>
-
  
  <%= form_tag books_path, :method => 'get',:id => "books_search" do %>
   <p>
@@ -30,8 +29,7 @@
 		<td><%= imdb_style_rating_for book, current_user %></td>
 		<td><%= book.tag_list %></td>
         <td><%= link_to 'Show', book %></td>
-	 
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
+		<td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
 	

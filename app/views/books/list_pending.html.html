@@ -1,0 +1,7 @@
+<% if current_user.is_admin? %>
+
+
+= link_to "Approve", approve_topic_path(topic), class: 'btn btn-mini' if section == :pending_topics
+= link_to "Complete", complete_topic_path(topic), class: 'btn btn-mini' if section == :approved_topics
+
+    
